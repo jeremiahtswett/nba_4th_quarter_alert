@@ -53,9 +53,14 @@ The scoreboard CDN (Akamai) rejects requests by TLS fingerprint, not just by
 User-Agent: with identical browser-like headers, `requests`/urllib3 gets an
 HTML "Access Denied" page while stdlib `urllib` gets JSON (verified
 empirically). So the fetcher uses `urllib` — which also means **zero
-third-party runtime dependencies**. The client validates that every response
-actually parses as scoreboard JSON; an HTML denial page is treated as a
-failed fetch, retried, and logged loudly.
+third-party runtime dependencies**. From datacenter IPs (like Actions
+runners) the *full* Chrome header set (`Sec-Ch-Ua`, `Sec-Fetch-*`, `Origin`)
+is also required — a plain User-Agent gets a 403 (verified from a runner).
+The client validates that every response actually parses as scoreboard JSON;
+an HTML denial page is treated as a failed fetch, retried, and logged loudly.
+If this feed ever regresses permanently, ESPN's public scoreboard
+(`site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard`) is a
+verified-reachable fallback that exposes the same fields.
 
 ## Repo layout
 

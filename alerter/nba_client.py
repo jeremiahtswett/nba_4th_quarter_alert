@@ -21,7 +21,10 @@ from .config import SCOREBOARD_URL
 
 log = logging.getLogger(__name__)
 
-# Browser-like headers; a bare default User-Agent gets blocked.
+# Full Chrome header set. The complete set matters: from datacenter IPs
+# (e.g. GitHub Actions runners) Akamai returns 403 with just a User-Agent +
+# Referer, but accepts the request when the Sec-Ch-Ua/Sec-Fetch-*/Origin
+# headers are present too (verified from a runner).
 HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -30,6 +33,13 @@ HEADERS = {
     "Accept": "application/json",
     "Accept-Language": "en-US,en;q=0.9",
     "Referer": "https://www.nba.com/",
+    "Origin": "https://www.nba.com",
+    "Sec-Ch-Ua": '"Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"',
+    "Sec-Ch-Ua-Mobile": "?0",
+    "Sec-Ch-Ua-Platform": '"Windows"',
+    "Sec-Fetch-Dest": "empty",
+    "Sec-Fetch-Mode": "cors",
+    "Sec-Fetch-Site": "same-site",
 }
 
 REQUEST_TIMEOUT = 15  # seconds
