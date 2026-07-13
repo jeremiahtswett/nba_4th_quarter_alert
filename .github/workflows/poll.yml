@@ -19,11 +19,12 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "run = normal polling; simulate = send a real test email from a fixture"
+        description: "run = normal polling; simulate = send a real test email from a fixture; check-schedule = print today's scoreboard"
         type: choice
         options:
           - run
           - simulate
+          - check-schedule
         default: run
 
 permissions:
