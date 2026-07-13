@@ -1,0 +1,55 @@
+{
+  "meta": {
+    "version": 1,
+    "request": "fixture://overtime",
+    "time": "2026-01-15 23:35:00.0000",
+    "code": 200
+  },
+  "scoreboard": {
+    "gameDate": "2026-01-15",
+    "leagueId": "00",
+    "leagueName": "National Basketball Association",
+    "games": [
+      {
+        "gameId": "0022500565",
+        "gameCode": "20260115/MILCLE",
+        "gameStatus": 2,
+        "gameStatusText": "OT 4:38",
+        "period": 5,
+        "gameClock": "PT04M38.00S",
+        "gameTimeUTC": "2026-01-16T00:30:00Z",
+        "gameEt": "2026-01-15T19:30:00-05:00",
+        "regulationPeriods": 4,
+        "ifNecessary": false,
+        "seriesGameNumber": "",
+        "seriesText": "",
+        "homeTeam": {
+          "teamId": 1610612739,
+          "teamName": "Cavaliers",
+          "teamCity": "Cleveland",
+          "teamTricode": "CLE",
+          "wins": 31,
+          "losses": 11,
+          "score": 114,
+          "seed": null,
+          "inBonus": "1",
+          "timeoutsRemaining": 1,
+          "periods": []
+        },
+        "awayTeam": {
+          "teamId": 1610612749,
+          "teamName": "Bucks",
+          "teamCity": "Milwaukee",
+          "teamTricode": "MIL",
+          "wins": 25,
+          "losses": 17,
+          "score": 114,
+          "seed": null,
+          "inBonus": "1",
+          "timeoutsRemaining": 2,
+          "periods": []
+        }
+      }
+    ]
+  }
+}

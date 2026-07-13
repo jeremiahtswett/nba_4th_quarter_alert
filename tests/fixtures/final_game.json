@@ -1,0 +1,55 @@
+{
+  "meta": {
+    "version": 1,
+    "request": "fixture://final_game",
+    "time": "2026-01-15 23:59:00.0000",
+    "code": 200
+  },
+  "scoreboard": {
+    "gameDate": "2026-01-15",
+    "leagueId": "00",
+    "leagueName": "National Basketball Association",
+    "games": [
+      {
+        "gameId": "0022500566",
+        "gameCode": "20260115/SASHOU",
+        "gameStatus": 3,
+        "gameStatusText": "Final",
+        "period": 4,
+        "gameClock": "",
+        "gameTimeUTC": "2026-01-16T01:00:00Z",
+        "gameEt": "2026-01-15T20:00:00-05:00",
+        "regulationPeriods": 4,
+        "ifNecessary": false,
+        "seriesGameNumber": "",
+        "seriesText": "",
+        "homeTeam": {
+          "teamId": 1610612745,
+          "teamName": "Rockets",
+          "teamCity": "Houston",
+          "teamTricode": "HOU",
+          "wins": 28,
+          "losses": 14,
+          "score": 110,
+          "seed": null,
+          "inBonus": "1",
+          "timeoutsRemaining": 0,
+          "periods": []
+        },
+        "awayTeam": {
+          "teamId": 1610612759,
+          "teamName": "Spurs",
+          "teamCity": "San Antonio",
+          "teamTricode": "SAS",
+          "wins": 23,
+          "losses": 19,
+          "score": 107,
+          "seed": null,
+          "inBonus": "1",
+          "timeoutsRemaining": 1,
+          "periods": []
+        }
+      }
+    ]
+  }
+}

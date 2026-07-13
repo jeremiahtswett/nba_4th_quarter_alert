@@ -1,0 +1,55 @@
+{
+  "meta": {
+    "version": 1,
+    "request": "fixture://blowout_q4",
+    "time": "2026-01-15 22:50:00.0000",
+    "code": 200
+  },
+  "scoreboard": {
+    "gameDate": "2026-01-15",
+    "leagueId": "00",
+    "leagueName": "National Basketball Association",
+    "games": [
+      {
+        "gameId": "0022500562",
+        "gameCode": "20260115/DENOKC",
+        "gameStatus": 2,
+        "gameStatusText": "Q4 2:00",
+        "period": 4,
+        "gameClock": "PT02M00.00S",
+        "gameTimeUTC": "2026-01-16T01:00:00Z",
+        "gameEt": "2026-01-15T20:00:00-05:00",
+        "regulationPeriods": 4,
+        "ifNecessary": false,
+        "seriesGameNumber": "",
+        "seriesText": "",
+        "homeTeam": {
+          "teamId": 1610612760,
+          "teamName": "Thunder",
+          "teamCity": "Oklahoma City",
+          "teamTricode": "OKC",
+          "wins": 35,
+          "losses": 7,
+          "score": 122,
+          "seed": null,
+          "inBonus": "1",
+          "timeoutsRemaining": 3,
+          "periods": []
+        },
+        "awayTeam": {
+          "teamId": 1610612743,
+          "teamName": "Nuggets",
+          "teamCity": "Denver",
+          "teamTricode": "DEN",
+          "wins": 27,
+          "losses": 15,
+          "score": 104,
+          "seed": null,
+          "inBonus": "0",
+          "timeoutsRemaining": 2,
+          "periods": []
+        }
+      }
+    ]
+  }
+}

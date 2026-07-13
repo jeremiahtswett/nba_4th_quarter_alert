@@ -1,0 +1,55 @@
+{
+  "meta": {
+    "version": 1,
+    "request": "fixture://close_game_q4",
+    "time": "2026-01-15 22:47:00.0000",
+    "code": 200
+  },
+  "scoreboard": {
+    "gameDate": "2026-01-15",
+    "leagueId": "00",
+    "leagueName": "National Basketball Association",
+    "games": [
+      {
+        "gameId": "0022500561",
+        "gameCode": "20260115/LALBOS",
+        "gameStatus": 2,
+        "gameStatusText": "Q4 3:42",
+        "period": 4,
+        "gameClock": "PT03M42.00S",
+        "gameTimeUTC": "2026-01-16T00:30:00Z",
+        "gameEt": "2026-01-15T19:30:00-05:00",
+        "regulationPeriods": 4,
+        "ifNecessary": false,
+        "seriesGameNumber": "",
+        "seriesText": "",
+        "homeTeam": {
+          "teamId": 1610612738,
+          "teamName": "Celtics",
+          "teamCity": "Boston",
+          "teamTricode": "BOS",
+          "wins": 30,
+          "losses": 12,
+          "score": 101,
+          "seed": null,
+          "inBonus": "1",
+          "timeoutsRemaining": 2,
+          "periods": []
+        },
+        "awayTeam": {
+          "teamId": 1610612747,
+          "teamName": "Lakers",
+          "teamCity": "Los Angeles",
+          "teamTricode": "LAL",
+          "wins": 28,
+          "losses": 14,
+          "score": 98,
+          "seed": null,
+          "inBonus": "0",
+          "timeoutsRemaining": 1,
+          "periods": []
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "meta": {
+    "version": 1,
+    "request": "fixture://halftime",
+    "time": "2026-01-15 21:05:00.0000",
+    "code": 200
+  },
+  "scoreboard": {
+    "gameDate": "2026-01-15",
+    "leagueId": "00",
+    "leagueName": "National Basketball Association",
+    "games": [
+      {
+        "gameId": "0022500564",
+        "gameCode": "20260115/GSWPHX",
+        "gameStatus": 2,
+        "gameStatusText": "Half",
+        "period": 2,
+        "gameClock": "",
+        "gameTimeUTC": "2026-01-16T02:00:00Z",
+        "gameEt": "2026-01-15T21:00:00-05:00",
+        "regulationPeriods": 4,
+        "ifNecessary": false,
+        "seriesGameNumber": "",
+        "seriesText": "",
+        "homeTeam": {
+          "teamId": 1610612756,
+          "teamName": "Suns",
+          "teamCity": "Phoenix",
+          "teamTricode": "PHX",
+          "wins": 24,
+          "losses": 18,
+          "score": 58,
+          "seed": null,
+          "inBonus": "0",
+          "timeoutsRemaining": 5,
+          "periods": []
+        },
+        "awayTeam": {
+          "teamId": 1610612744,
+          "teamName": "Warriors",
+          "teamCity": "Golden State",
+          "teamTricode": "GSW",
+          "wins": 22,
+          "losses": 20,
+          "score": 60,
+          "seed": null,
+          "inBonus": "0",
+          "timeoutsRemaining": 5,
+          "periods": []
+        }
+      }
+    ]
+  }
+}

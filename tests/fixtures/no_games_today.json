@@ -1,0 +1,14 @@
+{
+  "meta": {
+    "version": 1,
+    "request": "fixture://no_games_today",
+    "time": "2026-07-13 12:00:00.0000",
+    "code": 200
+  },
+  "scoreboard": {
+    "gameDate": "2026-07-13",
+    "leagueId": "00",
+    "leagueName": "National Basketball Association",
+    "games": []
+  }
+}

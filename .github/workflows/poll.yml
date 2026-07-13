@@ -1,0 +1,59 @@
+# NBA close-game poller.
+#
+# Crons fire every 30 minutes across the nightly window (~9:00 AM–11:30 PM
+# Pacific, generous for both PST and PDT — precise window logic runs in
+# Python using America/Los_Angeles). The 30-minute cadence is a watchdog:
+# each run either polls until the night is over or exits in seconds, and if
+# a run dies or GitHub starts one late, the next cron resumes within ~30
+# minutes. The concurrency group stops overlapping runs from double-polling.
+#
+# On days with no games (including the whole off-season) each run exits in
+# a few seconds.
+
+name: NBA close-game poller
+
+on:
+  schedule:
+    # 16:00–23:30 UTC and 00:00–07:30 UTC = ~8 AM–11:30 PM Pacific.
+    - cron: "0,30 0-7,16-23 * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "run = normal polling; simulate = send a real test email from a fixture"
+        type: choice
+        options:
+          - run
+          - simulate
+        default: run
+
+permissions:
+  contents: write # the run commits dedup state back to the repo
+
+concurrency:
+  group: nba-poll
+  cancel-in-progress: false
+
+jobs:
+  poll:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350 # under GitHub's 6h cap; the runner self-limits to 5.5h
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Configure git identity for state commits
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Run alerter
+        env:
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          ALERT_RECIPIENT: ${{ secrets.ALERT_RECIPIENT }}
+          ENABLED: ${{ vars.ENABLED || 'true' }}
+          GIT_COMMIT_STATE: "true"
+        run: python -m alerter ${{ github.event.inputs.mode || 'run' }}

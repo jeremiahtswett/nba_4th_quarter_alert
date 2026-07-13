@@ -1,0 +1,55 @@
+{
+  "meta": {
+    "version": 1,
+    "request": "fixture://early_game_q2",
+    "time": "2026-01-15 20:15:00.0000",
+    "code": 200
+  },
+  "scoreboard": {
+    "gameDate": "2026-01-15",
+    "leagueId": "00",
+    "leagueName": "National Basketball Association",
+    "games": [
+      {
+        "gameId": "0022500563",
+        "gameCode": "20260115/NYKMIA",
+        "gameStatus": 2,
+        "gameStatusText": "Q2 4:12",
+        "period": 2,
+        "gameClock": "PT04M12.00S",
+        "gameTimeUTC": "2026-01-16T00:00:00Z",
+        "gameEt": "2026-01-15T19:00:00-05:00",
+        "regulationPeriods": 4,
+        "ifNecessary": false,
+        "seriesGameNumber": "",
+        "seriesText": "",
+        "homeTeam": {
+          "teamId": 1610612748,
+          "teamName": "Heat",
+          "teamCity": "Miami",
+          "teamTricode": "MIA",
+          "wins": 21,
+          "losses": 20,
+          "score": 44,
+          "seed": null,
+          "inBonus": "0",
+          "timeoutsRemaining": 6,
+          "periods": []
+        },
+        "awayTeam": {
+          "teamId": 1610612752,
+          "teamName": "Knicks",
+          "teamCity": "New York",
+          "teamTricode": "NYK",
+          "wins": 29,
+          "losses": 13,
+          "score": 46,
+          "seed": null,
+          "inBonus": "0",
+          "timeoutsRemaining": 6,
+          "periods": []
+        }
+      }
+    ]
+  }
+}
