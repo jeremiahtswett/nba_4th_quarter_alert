@@ -16,8 +16,8 @@ unlimited and free).
 A scheduled workflow fires every 30 minutes across the nightly window
 (~9:00 AM–11:30 PM Pacific). Each run:
 
-1. Fetches the NBA live scoreboard
-   (`cdn.nba.com/.../todaysScoreboard_00.json` — free, no auth).
+1. Fetches today's live scoreboard
+   (`site.api.espn.com/.../nba/scoreboard` — free, no auth).
 2. **No games today?** Exits in seconds. This is the entire off-season
    behavior — no toggling needed; polling resumes by itself when the schedule
    fills up in late October.
@@ -47,20 +47,22 @@ Weighing reliability > simplicity > cost (per spec):
   weekly **heartbeat commit** (also your off-season "it's alive" signal)
   keeps that from ever happening.
 
-### Why stdlib `urllib` instead of `requests`?
+### Why ESPN's scoreboard instead of cdn.nba.com?
 
-The scoreboard CDN (Akamai) rejects requests by TLS fingerprint, not just by
-User-Agent: with identical browser-like headers, `requests`/urllib3 gets an
-HTML "Access Denied" page while stdlib `urllib` gets JSON (verified
-empirically). So the fetcher uses `urllib` — which also means **zero
-third-party runtime dependencies**. From datacenter IPs (like Actions
-runners) the *full* Chrome header set (`Sec-Ch-Ua`, `Sec-Fetch-*`, `Origin`)
-is also required — a plain User-Agent gets a 403 (verified from a runner).
-The client validates that every response actually parses as scoreboard JSON;
-an HTML denial page is treated as a failed fetch, retried, and logged loudly.
-If this feed ever regresses permanently, ESPN's public scoreboard
-(`site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard`) is a
-verified-reachable fallback that exposes the same fields.
+The original version pulled `cdn.nba.com/.../todaysScoreboard_00.json`
+directly. That feed sits behind Akamai bot protection that blocks
+*datacenter ASNs* outright — not just a missing User-Agent or TLS
+fingerprint mismatch, but the IP range itself. A full browser header set got
+it working from one test run on a GitHub Actions runner, but every scheduled
+run over the following week still got an HTML "Access Denied" page back
+(HTTP 403), because Actions runner IPs are drawn from a large, rotating
+Azure range and Akamai was blocking most of it regardless of headers.
+ESPN's public scoreboard (`site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard`)
+exposes the same live fields (score, period, game clock) and isn't behind
+that wall, so `nba_client.py` fetches from there and normalizes the response
+into the same internal shape the rest of the package expects. Still uses
+stdlib `urllib` — **zero third-party runtime dependencies** — though that's
+no longer load-bearing for TLS-fingerprint reasons, just simplicity.
 
 ## Repo layout
 
@@ -68,7 +70,7 @@ verified-reachable fallback that exposes the same fields.
 alerter/
   clock.py       gameClock parsing ("PT04M32.00S" → seconds; "" → None)
   trigger.py     pure close-game/OT decision — no I/O, fully unit-tested
-  nba_client.py  scoreboard fetch: browser headers, denial-page guard, retries
+  nba_client.py  scoreboard fetch from ESPN + normalize to internal shape, retries
   emailer.py     Gmail SMTP (STARTTLS :587), subject/body format, retry
   state.py       dedup store, committed back to the repo from Actions
   runner.py      schedule-aware poll loop, Pacific-time window, heartbeat

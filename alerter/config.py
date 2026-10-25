@@ -4,7 +4,7 @@ import os
 from dataclasses import dataclass
 from zoneinfo import ZoneInfo
 
-SCOREBOARD_URL = "https://cdn.nba.com/static/json/liveData/scoreboard/todaysScoreboard_00.json"
+SCOREBOARD_URL = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard"
 
 PACIFIC = ZoneInfo("America/Los_Angeles")
 

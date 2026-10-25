@@ -1,3 +1,2 @@
-# Runtime is pure Python stdlib. (requests is deliberately NOT used: Akamai
-# blocks urllib3's TLS fingerprint on cdn.nba.com — see alerter/nba_client.py.)
+# Runtime is pure Python stdlib (see alerter/nba_client.py).
 tzdata>=2024.1  # IANA timezone data for zoneinfo on platforms without it (Windows)
